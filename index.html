@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación Thiago - Messi Style</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap');
+
+        body {
+            background-color: #000;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 450px;
+            height: 100vh;
+            background: linear-gradient(to bottom, #75aadb, #ffffff, #75aadb);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+        }
+
+        .stripe {
+            position: absolute;
+            width: 100%;
+            height: 25%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: skewY(-10deg);
+        }
+
+        .content-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            z-index: 10;
+        }
+
+        h1, h2 {
+            font-family: 'Bebas Neue', cursive;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .star {
+            color: #d4af37;
+            font-size: 2rem;
+            display: inline-block;
+            filter: drop-shadow(0 0 5px gold);
+        }
+
+        .btn-confirm {
+            background: #25D366;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+            transition: transform 0.3s;
+        }
+
+        .btn-location {
+            background: #4285F4;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        #scene-container > div {
+            display: none;
+        }
+
+        #scene-container > .active {
+            display: flex;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #d4af37;
+            top: -10px;
+            z-index: 5;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        .boy-img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 5px solid gold;
+            object-fit: cover;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+        }
+
+        /* Overlay para iniciar música */
+        #start-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="start-overlay">
+        <div class="text-center p-6 bg-white rounded-2xl text-blue-600 animate__animated animate__zoomIn">
+            <h2 class="text-3xl mb-4">¿Estás listo para el Mundial de Thiago?</h2>
+            <button onclick="startInvitation()" class="bg-blue-500 text-white px-8 py-3 rounded-full font-bold text-xl hover:scale-110 transition">
+                VER INVITACIÓN ⚽
+            </button>
+        </div>
+    </div>
+
+    <div class="video-container">
+        <!-- Fondo con franjas -->
+        <div class="stripe" style="top: 10%;"></div>
+        <div class="stripe" style="top: 50%;"></div>
+        
+        <div id="scene-container" class="content-overlay h-full w-full">
+            
+            <!-- Escena 1: Introducción -->
+            <div id="scene1" class="active flex-col items-center animate__animated">
+                <div class="flex gap-2 mb-4">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+                <h2 class="text-4xl text-blue-800 animate__animated animate__fadeInDown">¡PREPARATE!</h2>
+                <h1 class="text-7xl text-blue-900 mb-6 animate__animated animate__zoomIn">THIAGO</h1>
+                <p class="text-2xl text-blue-700 font-bold">CUMPLE 3 AÑOS</p>
+                <div class="mt-8 animate__animated animate__bounceIn">
+                    <img src="./Titi.jpg" alt="Thiago" class="boy-img" onerror="this.src='https://via.placeholder.com/250/75aadb/ffffff?text=THIAGO+CAMPEON'">
+                </div>
+            </div>
+
+            <!-- Escena 2: El Capitán -->
+            <div id="scene2" class="flex-col items-center animate__animated">
+                <h2 class="text-3xl text-blue-800 mb-4">AL ESTILO DEL CAPITÁN</h2>
+                <div class="relative">
+                     <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="animate-bounce">
+                        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                        <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                        <path d="M4 22h16"></path>
+                        <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                        <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                        <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+                    </svg>
+                </div>
+                <p class="text-xl text-blue-900 mt-6 px-4">"Muchachooos, ahora nos volvimos a ilusionar..."</p>
+                <p class="text-2xl font-bold text-blue-800 mt-4">¡Vení a festejar con nosotros!</p>
+            </div>
+
+            <!-- Escena 3: Datos del Evento -->
+            <div id="scene3" class="flex-col items-center animate__animated">
+                <h2 class="text-5xl text-blue-900 mb-8">¿DÓNDE Y CUÁNDO?</h2>
+                
+                <div class="bg-white/80 p-6 rounded-3xl shadow-lg border-2 border-blue-400 w-full max-w-[80%]">
+                    <div class="mb-4">
+                        <p class="text-blue-500 font-bold uppercase tracking-widest">Fecha</p>
+                        <p class="text-3xl text-blue-900 font-bold">06 / 06 / 26</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-blue-500 font-bold uppercase tracking-widest">Horario</p>
+                        <p class="text-3xl text-blue-900 font-bold">20:30 HS</p>
+                    </div>
+                    <div>
+                        <p class="text-blue-500 font-bold uppercase tracking-widest">Lugar</p>
+                        <p class="text-2xl text-blue-900 font-bold">Shine Eventos</p>
+                    </div>
+                </div>
+
+                <a href="https://maps.google.com/maps/place//data=!4m2!3m1!1s0x95bcc7f802e52b81:0xaf9b7181933b9417?entry=s&sa=X" target="_blank" class="btn-location animate__animated animate__pulse animate__infinite">
+                    📍 VER MAPA AQUÍ
+                </a>
+            </div>
+
+            <!-- Escena 4: RSVP y Dresscode -->
+            <div id="scene4" class="flex-col items-center animate__animated">
+                <h2 class="text-4xl text-blue-900 mb-6">REGLAS DEL JUEGO</h2>
+                
+                <div class="flex flex-col gap-6 w-full px-6">
+                    <div class="bg-blue-600 text-white p-4 rounded-2xl">
+                        <p class="text-lg">👕 <b>DRESSCODE:</b></p>
+                        <p>Vení con alguna prenda de la <b>Selección Argentina</b></p>
+                    </div>
+
+                    <div class="bg-blue-100 text-blue-900 p-4 rounded-2xl border-2 border-blue-600">
+                        <p class="mb-2">Por favor, confirmá tu asistencia antes del 01/06</p>
+                        <a href="https://wa.me/541130738399?text=Hola! Confirmo mi asistencia al cumple de Thiago" target="_blank" class="btn-confirm">
+                            ✅ CONFIRMAR AQUÍ
+                        </a>
+                    </div>
+                </div>
+
+                <p class="mt-8 text-blue-800 font-bold text-xl">¡TE ESPERAMOS!</p>
+                <div class="flex gap-2 mt-4">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Audio oculto (Muchachos) - Usamos una versión instrumental o similar de YouTube/Assets públicos -->
+    <!-- Nota: Se requiere interacción del usuario para reproducir audio -->
+    <audio id="bg-music" loop>
+        <source src="./Muchachos.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const scenes = ['scene1', 'scene2', 'scene3', 'scene4'];
+        let currentScene = 0;
+        let musicStarted = false;
+
+        function startInvitation() {
+            document.getElementById('start-overlay').style.display = 'none';
+            playMusic();
+            startAnimationLoop();
+            startConfetti();
+        }
+
+        function playMusic() {
+            const music = document.getElementById('bg-music');
+            music.play().catch(e => console.log("Audio play blocked"));
+        }
+
+        function startAnimationLoop() {
+            setInterval(() => {
+                const currentEl = document.getElementById(scenes[currentScene]);
+                currentEl.classList.remove('active', 'animate__fadeIn');
+                currentEl.classList.add('animate__fadeOut');
+
+                setTimeout(() => {
+                    currentEl.classList.remove('animate__fadeOut');
+                    currentEl.style.display = 'none';
+
+                    currentScene = (currentScene + 1) % scenes.length;
+                    
+                    const nextEl = document.getElementById(scenes[currentScene]);
+                    nextEl.style.display = 'flex';
+                    nextEl.classList.add('active', 'animate__fadeIn');
+                }, 500);
+
+            }, 5000); // Cambia cada 5 segundos
+        }
+
+        function startConfetti() {
+            setInterval(() => {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                confetti.style.opacity = Math.random();
+                confetti.style.backgroundColor = ['#75aadb', '#ffffff', '#d4af37'][Math.floor(Math.random() * 3)];
+                
+                document.querySelector('.video-container').appendChild(confetti);
+
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }, 150);
+        }
+    </script>
+</body>
+</html>
